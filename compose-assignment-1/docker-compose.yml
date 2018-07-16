@@ -1,10 +1,8 @@
-# create your drupal and postgres config here, based off the last assignment
 version: '2'  # set version of yml
 
 services:
   drupal:
-    image: custom-drupal
-    build: .
+    image: drupal
     ports:
       - "8080:80"
     volumes:
@@ -14,14 +12,11 @@ services:
       - drupal-themes:/var/www/html/themes
 
   psql:
-    image: postgres:9.6
+    image: postgresql
     environment:
       - POSTGRES_PASSWORD=mypassword
-    volumes:
-      - drupal-data:/var/lib/postgresql/data
 
 volumes:
-  drupal-data:
   drupal-modules:
   drupal-profiles:
   drupal-sites:
